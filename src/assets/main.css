@@ -11,3 +11,7 @@
     font-family: Jost-Semibold;
     src: url("../assets/fonts/Jost-SemiBold.ttf");
   }
+
+body {
+  background-color: #F7F8FD;
+}
