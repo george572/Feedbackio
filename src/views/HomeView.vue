@@ -2,8 +2,8 @@
 </script>
 
 <template>
-  <main>
-    <h2 class="text-3xl text-green-400">
+  <main class="w-full min-h-screen bg-lightGray">
+    <h2 class="text-[100px] text-green-400 font-[Jost-Regular]">
       Compnents here
     </h2> 
   </main>
