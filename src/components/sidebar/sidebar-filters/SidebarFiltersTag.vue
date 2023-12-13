@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps({
-    tagName: {
+    tagValue: {
         type: String,
         required: true,
     },
@@ -18,7 +18,7 @@ defineEmits(["filterByTag"]);
   <div
     class="px-4 py-2 rounded-xl font-[Jost-Semibold] text-[13px] transition-all duration-200 hover:bg-blue hover:text-white"
     :class="{'bg-blue text-white': isActive, 'text-blue bg-darkGray cursor-pointer': !isActive,}"
-    @click="$emit('filterByTag', tagName)"
+    @click="$emit('filterByTag', tagValue)"
   >
     <slot />
   </div>

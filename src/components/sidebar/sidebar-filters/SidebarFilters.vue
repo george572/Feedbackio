@@ -5,14 +5,18 @@ import { ref } from 'vue';
 const tags = ref([
   { title: "All", value: 'all', isActive: false },
   { title: "UI", value: 'ui', isActive: false },
-  { title: "UX", value: 'ux', isActive: true },
+  { title: "UX", value: 'ux', isActive: false },
   { title: "Enhancement", value: 'enhancement', isActive: false },
   { title: "Bug", value: 'bug', isActive: false },
   { title: "Feature", value: 'feature', isActive: false },
 ]);
 
 const filterByTag = ( tagName: string) => {
-  console.log('Filter requested by tag: ', tagName);
+  const tag = tags.value.find(el => el.value === tagName)!;
+  if (tag.isActive) return;
+  tags.value.forEach(el => el.isActive = false);
+  tag.isActive = true;
+  console.log('filterByTag', tagName);
 };
 </script>
 
@@ -21,7 +25,7 @@ const filterByTag = ( tagName: string) => {
     <SidebarFiltersTag
       v-for="tag in tags"
       :key="tag.value"
-      :tag-name="tag.value"
+      :tag-value="tag.value"
       :is-active="tag.isActive"
       @filter-by-tag="(tagName: string) => filterByTag(tagName)"
     >
