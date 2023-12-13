@@ -11,3 +11,17 @@
     font-family: Jost-Semibold;
     src: url("../assets/fonts/Jost-SemiBold.ttf");
   }
+
+@font-face {
+    font-family: Jost-Medium;
+    src: url("../assets/fonts/Jost-Medium.ttf");
+  }
+
+@font-face {
+    font-family: Jost-Bold;
+    src: url("../assets/fonts/Jost-Bold.ttf");
+  }
+
+body {
+  background-color: #F7F8FD;
+}
