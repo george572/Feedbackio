@@ -16,7 +16,6 @@ const filterByTag = ( tagName: string) => {
   if (tag.isActive) return;
   tags.value.forEach(el => el.isActive = false);
   tag.isActive = true;
-  console.log('filterByTag', tagName);
 };
 </script>
 
