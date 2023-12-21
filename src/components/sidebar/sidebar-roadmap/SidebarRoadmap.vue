@@ -16,7 +16,7 @@ const tasksData = [
       </h2>
       <a
         href="#!"
-        class="underline text-blue text-[13px] font-[Jost-Semibold]"
+        class="underline text-blue text-[13px] font-[Jost-Semibold] hover:text-[#8397F8] transition-all duration-200"
       >View</a>
     </div>
     <div class="flex flex-col gap-2 mt-6">
