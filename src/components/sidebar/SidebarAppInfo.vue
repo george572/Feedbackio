@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="app-info rounded-xl h-[137px] w-full flex flex-col justify-end p-6">
+  <div class="h-[178px] app-info rounded-xl lg:h-[137px] w-full flex flex-col justify-end p-6">
     <h1 class="text-white font-[Jost-Bold] text-xl">
       Feedbackio.web.app
     </h1>
