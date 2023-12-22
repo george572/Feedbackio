@@ -7,7 +7,7 @@ const openNavMenu = ref(false);
 </script>
 
 <template>
-  <div class="h-[72px] header w-full flex justify-between items-center p-6 relative">
+  <div class="h-[72px] header w-full flex justify-between items-center py-6 px-4 relative">
     <div>
       <h1 class="text-white font-[Jost-Bold] text-xl">
         Feedbackio.web.app

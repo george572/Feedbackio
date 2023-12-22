@@ -36,15 +36,18 @@ onClickOutside(dropdownEl, (event) => {
 <template>
   <div class="relative">
     <div
-      class="flex items-center text-white cursor-pointer"
+      class="flex flex-col items-start text-white cursor-pointer sm:items-center sm:flex-row"
       @click="openSortDropdown = !openSortDropdown"
     >
-      <span class="opener font-[Jost-Regular] text-sm">Sort By : <span class="opener font-[Jost-Bold]">{{ activeSortOption }}</span></span>
-      <img
-        src="../../assets/images/dropdownarrow.svg"
-        class="mx-2 transition-transform duration-200"
-        :class="{ 'transform rotate-180': openSortDropdown }"
-      >
+      <span class="opener font-[Jost-Regular] text-sm pr-1">Sort By :</span>
+      <div class="opener font-[Jost-Bold] flex gap-1 items-center">
+        {{ activeSortOption }}
+        <img
+          src="../../assets/images/dropdownarrow.svg"
+          class="transition-transform duration-200"
+          :class="{ 'transform rotate-180': openSortDropdown }"
+        >
+      </div>
     </div>
     <Transition>
       <div

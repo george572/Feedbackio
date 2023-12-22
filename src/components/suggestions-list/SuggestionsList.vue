@@ -28,7 +28,7 @@ const parseSuggestionsData = () => {
 </script>
 
 <template>
-  <div class="w-full px-6 md:px-0">
+  <div class="w-full px-0 lg:px-0">
     <SuggestionsHeader />
     <div class="mt-6">
       <SuggestionItem

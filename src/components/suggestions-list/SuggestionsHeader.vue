@@ -12,10 +12,10 @@ defineProps({
 </script>
 
 <template>
-  <div class="w-full h-[72px] py-6 px-4 flex bg-darkBlue rounded-xl text-white justify-between items-center">
+  <div class="w-full h-[72px] py-6 px-4 flex bg-darkBlue rounded-0 md:rounded-xl text-white justify-between items-center">
     <div class="flex items-center gap-8">
       <!-- total amount of suggestions -->
-      <div class="flex items-center gap-4 pl-2">
+      <div class="items-center hidden gap-4 pl-2 md:flex">
         <img
           src="../../assets/images/suggestion-header-icon.svg"
         >
