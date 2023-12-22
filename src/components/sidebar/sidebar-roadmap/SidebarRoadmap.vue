@@ -9,7 +9,7 @@ const tasksData = [
 </script>
 
 <template>
-  <div class="w-full h-[178px] rounded-xl bg-white py-5 px-6">
+  <div class="min-w-[223px] md:min-w-[initial] w-full h-[178px] rounded-xl bg-white py-5 px-6 overflow-hidden">
     <div class="flex items-center justify-between">
       <h2 class="font-[Jost-Bold] text-lg text-darkBlue">
         Roadmap

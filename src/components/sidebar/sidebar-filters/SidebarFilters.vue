@@ -20,7 +20,7 @@ const filterByTag = ( tagName: string) => {
 </script>
 
 <template>
-  <div class="w-full bg-white rounded-xl h-[178px] lg:h-[166px] px-6 py-4 flex flex-wrap gap-2 items-start gap-y-3.5">
+  <div class="min-w-[223px] md:min-w-[initial] w-full bg-white rounded-xl h-[178px] lg:h-[166px] px-6 py-4 flex flex-wrap gap-2 items-start gap-y-3.5 overflow-hidden">
     <SidebarFiltersTag
       v-for="tag in tags"
       :key="tag.value"
