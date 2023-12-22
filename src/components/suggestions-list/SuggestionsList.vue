@@ -30,7 +30,7 @@ const parseSuggestionsData = () => {
 <template>
   <div class="w-full px-0 lg:px-0">
     <SuggestionsHeader />
-    <div class="mt-6">
+    <div class="px-6 mt-6 md:px-0">
       <SuggestionItem
         v-for="suggestion in suggesionsData"
         :key="suggestion.id"

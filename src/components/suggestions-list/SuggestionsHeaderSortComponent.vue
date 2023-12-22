@@ -36,7 +36,7 @@ onClickOutside(dropdownEl, (event) => {
 <template>
   <div class="relative">
     <div
-      class="flex flex-col items-start text-white cursor-pointer sm:items-center sm:flex-row"
+      class="flex flex-col items-start text-white cursor-pointer xs:items-center xs:flex-row"
       @click="openSortDropdown = !openSortDropdown"
     >
       <span class="opener font-[Jost-Regular] text-sm pr-1">Sort By :</span>

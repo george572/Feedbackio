@@ -19,7 +19,8 @@ export default {
         red: "#D73737",
       },
       screens: {
-        'sm': '390px',
+        'xs': '390px',
+        'sm': '550px',
         'md': '770px',
         'lg': '960px',
         'xl': '1280px',
