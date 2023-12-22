@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { onClickOutside } from '@vueuse/core';
+import { useSuggestionsStore } from '../../stores/suggestionsStore.js';
+
+const store = useSuggestionsStore();
 
 const activeSortOption = computed(() => {
     const el = sortOptions.value.find(el => el.isActive)!;
@@ -17,11 +20,12 @@ const sortOptions = ref([
     { title: 'Least Comments', value: 'least-comments', isActive: false },   
 ]);
 
-const sortByOption = (value: string) => {
-  const option = sortOptions.value.find(el => el.value === value)!;
+const sortByOption = (selectedSortOption: string) => {
+  const option = sortOptions.value.find(el => el.value === selectedSortOption)!;
   if (option.isActive) return;
   sortOptions.value.forEach(el => el.isActive = false);
   option.isActive = true;
+  store.sortSuggestions(selectedSortOption);
 };
 
 onClickOutside(dropdownEl, (event) => {
@@ -34,7 +38,7 @@ onClickOutside(dropdownEl, (event) => {
 </script>
 
 <template>
-  <div class="relative">
+  <div class="relative z-10">
     <div
       class="flex flex-col items-start text-white cursor-pointer xs:items-center xs:flex-row"
       @click="openSortDropdown = !openSortDropdown"

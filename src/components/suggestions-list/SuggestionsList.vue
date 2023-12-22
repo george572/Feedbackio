@@ -1,45 +1,59 @@
 <script setup>
 import SuggestionsHeader from './SuggestionsHeader.vue';
 import SuggestionItem from './SuggestionItem.vue';
-import suggestionsDataMock from '../../../data.json';
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
+import { useSuggestionsStore } from '../../stores/suggestionsStore.js';
+import { storeToRefs } from 'pinia';
 
+
+const store = useSuggestionsStore();
+
+const { suggestionsData, totalSuggestions } = storeToRefs(store);
 
 onMounted(() => {
-  parseSuggestionsData();
-  console.log(suggestionsDataMock);
+  store.getSuggestionsData();
 });
 
-const suggesionsData = ref([]);
-
-const parseSuggestionsData = () => {
-  suggestionsDataMock.productRequests.forEach((suggestion) => {
-    suggesionsData.value.push({
-      id: suggestion.id,
-      title: suggestion.title,
-      description: suggestion.description,
-      category: suggestion.category,
-      upvotes: suggestion.upvotes,
-      status: suggestion.status,
-      comments: suggestion.comments,
-    });
-  });
-};
 </script>
 
 <template>
   <div class="w-full px-0 lg:px-0">
-    <SuggestionsHeader />
-    <div class="px-6 mt-6 md:px-0">
-      <SuggestionItem
-        v-for="suggestion in suggesionsData"
-        :key="suggestion.id"
-        :upvotes-amount="suggestion.upvotes"
-        :title="suggestion.title"
-        :description="suggestion.description"
-        :tag="suggestion.category"
-        :comments-amount="suggestion.comments ? suggestion.comments.length : 0"
-      />
+    <SuggestionsHeader :total-suggestions="totalSuggestions" />
+    <div class="relative px-6 mt-6 overflow-hidden md:px-0 ">
+      <transition-group
+        name="list"
+        tag="ul"
+      >
+        <SuggestionItem
+          v-for="suggestion in suggestionsData"
+          :key="suggestion.id"
+          :upvotes-amount="suggestion.upvotes"
+          :title="suggestion.title"
+          :description="suggestion.description"
+          :tag="suggestion.category"
+          :comments-amount="suggestion.comments ? suggestion.comments.length : 0"
+        />
+      </transition-group>
     </div>
   </div>
 </template>
+
+<style>
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.3s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: opacity 0.3s ease;
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
+</style>

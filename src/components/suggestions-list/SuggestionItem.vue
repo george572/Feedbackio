@@ -24,7 +24,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex flex-row items-end justify-between w-full px-6 my-5 bg-white sm:px-8 sm:items-center py-7 rounded-xl">
+  <div class="relative flex flex-row items-end justify-between w-full px-6 my-5 bg-white sm:px-8 sm:items-center py-7 rounded-xl">
     <div class="flex flex-col-reverse gap-4 sm:gap-10 sm:flex-row">
       <div class="min-w-[40px] max-w-[69px] h-[32px] flex-row-reverse sm:h-[53px] bg-darkGray rounded-xl flex items-center justify-center sm:flex-col gap-1 cursor-pointer hover:bg-[#CFD7FF] transition-all duration-200">
         <img src="../../assets/images/upvote-sign.svg">
@@ -40,7 +40,7 @@ defineProps({
         </div>
       </div>
     </div>
-    <div class="relative flex items-center gap-2 pr-3 cursor-pointer sm:pr-0 bottom-1 xs:bottom-0">
+    <div class="absolute flex items-center gap-2 pr-3 cursor-pointer right-4 bottom-8 xs:right-0 xs:bottom-2 xs:relative sm:pr-0">
       <img src="../../assets/images/comment.svg">
       <span class="text-base font-[Jost-Bold]">{{ commentsAmount }}</span>
     </div>
