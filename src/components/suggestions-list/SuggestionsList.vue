@@ -39,7 +39,7 @@ onMounted(() => {
 </template>
 
 <style>
-.list-move, /* apply transition to moving elements */
+.list-move,
 .list-enter-active,
 .list-leave-active {
   transition: all 0.3s ease;
@@ -51,8 +51,6 @@ onMounted(() => {
   transform: opacity 0.3s ease;
 }
 
-/* ensure leaving items are taken out of layout flow so that moving
-   animations can be calculated correctly. */
 .list-leave-active {
   position: absolute;
 }

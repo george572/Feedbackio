@@ -7,7 +7,6 @@ export const useSuggestionsStore = defineStore('Suggestions Store', () => {
   const suggestionsData = ref([]);
 
   const getSuggestionsData = () => {
-    console.log(suggestionsDataMock);
     suggestionsDataMock.productRequests.forEach((suggestion) => {
       suggestionsData.value.push({
         id: suggestion.id,
@@ -21,28 +20,18 @@ export const useSuggestionsStore = defineStore('Suggestions Store', () => {
     });
   };
 
-  const sortSuggestions = (sortBy) => {
-    if ( sortBy === 'most-comments' || sortBy === 'least-comments' ) {
-      //   ne rabotaet
-      suggestionsData.value.comments.sort((a, b) => {
-        if (sortBy === 'most-comments') {
-          return a.comments.length - b.comments.length;
-        }
-        if (sortBy === 'least-comments') {
-          return b.comments.length - a.comments.length;
-        }
-      });
-    } else {
-      suggestionsData.value.sort((a, b) => {
-        if (sortBy === 'most-upvotes') {
-          return b.upvotes - a.upvotes;
-        }
-        if (sortBy === 'least-upvotes') {
-          return a.upvotes - b.upvotes;
-        }
-      });
-    }
-    return 0;
+  const sortFunctions = {
+    'most-comments': (a, b) => (b.comments?.length ?? 0) - (a.comments?.length ?? 0),
+    'least-comments': (a, b) => (a.comments?.length ?? 0) - (b.comments?.length ?? 0),
+    'most-upvotes': (a, b) => b.upvotes - a.upvotes,
+    'least-upvotes': (a, b) => a.upvotes - b.upvotes,
   };
-  return { totalSuggestions, getSuggestionsData, suggestionsData, sortSuggestions };
+  
+  const sortSuggestionsList = (sortBy) => {
+    const sortFunction = sortFunctions[sortBy];
+    if (sortFunction) {
+      suggestionsData.value.sort(sortFunction);
+    }
+  };
+  return { totalSuggestions, getSuggestionsData, suggestionsData, sortSuggestionsList };
 });

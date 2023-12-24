@@ -25,7 +25,7 @@ const sortByOption = (selectedSortOption: string) => {
   if (option.isActive) return;
   sortOptions.value.forEach(el => el.isActive = false);
   option.isActive = true;
-  store.sortSuggestions(selectedSortOption);
+  store.sortSuggestionsList(selectedSortOption);
 };
 
 onClickOutside(dropdownEl, (event) => {
