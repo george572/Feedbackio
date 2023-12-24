@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import SuggestionsHeader from './SuggestionsHeader.vue';
 import SuggestionItem from './SuggestionItem.vue';
-import { onMounted } from 'vue';
+import { onMounted, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useSuggestionsStore } from '../../stores/suggestionsStore';
 
 
 const store = useSuggestionsStore();
 
-const { suggestionsData, totalSuggestions } = storeToRefs(store);
+const { suggestionsData, totalSuggestions, currentlySelectedCategory } = storeToRefs(store);
+
+const filteredSuggestionsData = computed(() => {
+  if (currentlySelectedCategory.value === 'all') return suggestionsData.value;
+  return suggestionsData.value.filter((suggestion) => suggestion.category === currentlySelectedCategory.value);
+});
+
 
 onMounted(() => {
   store.getSuggestionsData();
+  store.sortSuggestionsList('most-upvotes');
 });
 
 </script>
@@ -19,13 +26,13 @@ onMounted(() => {
 <template>
   <div class="w-full px-0 lg:px-0">
     <SuggestionsHeader :total-suggestions="totalSuggestions" />
-    <div class="relative px-6 mt-6 overflow-hidden md:px-0 ">
+    <div class="relative px-6 mt-6 overflow-hidden md:px-0">
       <transition-group
         name="list"
         tag="ul"
       >
         <SuggestionItem
-          v-for="suggestion in suggestionsData"
+          v-for="suggestion in filteredSuggestionsData"
           :key="suggestion.id"
           :upvotes-amount="suggestion.upvotes"
           :title="suggestion.title"

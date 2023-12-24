@@ -22,7 +22,7 @@ export default {
         'xs': '390px',
         'sm': '550px',
         'md': '770px',
-        'lg': '960px',
+        'lg': '996px',
         'xl': '1280px',
         '2xl': '1536px',
       },
