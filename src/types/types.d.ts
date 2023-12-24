@@ -1,17 +1,4 @@
-type User = {
-    image: string;
-    name: string;
-    username: string;
-  };
-  
-  type Comment = {
-    id: number;
-    content: string;
-    user: User;
-    replies?: Comment[];
-    replyingTo?: string;
-  };
-  
+
   type SuggestionDataObject = {
     id: number;
     title: string;
@@ -19,5 +6,22 @@ type User = {
     upvotes: number;
     status: string;
     description: string;
-    comments?: Comment[];
-  };
+    comments?: (Comment)[] | null;
+  }
+  type Comment = {
+    id: number;
+    content: string;
+    user: User;
+    replies?: (Reply)[] | null;
+  }
+  type User = {
+    image: string;
+    name: string;
+    username: string;
+  }
+  type Reply = {
+    content: string;
+    replyingTo?: string;
+    user: User;
+  }
+  

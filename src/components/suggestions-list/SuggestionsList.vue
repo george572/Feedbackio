@@ -1,9 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import SuggestionsHeader from './SuggestionsHeader.vue';
 import SuggestionItem from './SuggestionItem.vue';
 import { onMounted } from 'vue';
-import { useSuggestionsStore } from '../../stores/suggestionsStore.js';
 import { storeToRefs } from 'pinia';
+import { useSuggestionsStore } from '../../stores/suggestionsStore';
 
 
 const store = useSuggestionsStore();
@@ -54,4 +54,4 @@ onMounted(() => {
 .list-leave-active {
   position: absolute;
 }
-</style>
+</style>../../stores/suggestionsStore
