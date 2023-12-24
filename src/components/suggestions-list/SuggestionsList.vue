@@ -2,7 +2,7 @@
 import SuggestionsHeader from './SuggestionsHeader.vue';
 import SuggestionItem from './SuggestionItem.vue';
 import SuggestionsListEmpty from './SuggestionsListEmpty.vue';
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useSuggestionsStore } from '../../stores/suggestionsStore';
 
@@ -20,6 +20,16 @@ const filteredSuggestionsData = computed(() => {
 onMounted(() => {
   store.getSuggestionsData();
   store.sortSuggestionsList('most-upvotes');
+  store.setTotalSuggestions(filteredSuggestionsData.value.length);
+});
+
+watch(filteredSuggestionsData, () => {
+  if (filteredSuggestionsData.value.length === 0) {
+    store.setSuggestionsListEmpty(true);
+  } else {
+    store.setSuggestionsListEmpty(false);
+  }
+  store.setTotalSuggestions(filteredSuggestionsData.value.length);
 });
 
 </script>
@@ -86,4 +96,4 @@ onMounted(() => {
 .fade-leave-to {
   opacity: 0;
 }
-</style>../../stores/suggestionsStore
+</style>

@@ -1,11 +1,12 @@
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import suggestionsDataMock from '../../data.json';
 
 export const useSuggestionsStore = defineStore('Suggestions Store', () => {
-  const totalSuggestions = computed(() => suggestionsData.value.length);
+  const totalSuggestions = ref(0);
   const suggestionsData = ref<any[]>([]);
   const currentlySelectedCategory = ref<string>('all');
+  const suggestionsIsEmpty = ref<boolean>(false);
 
   const getSuggestionsData = () => {
     suggestionsDataMock.productRequests.forEach((suggestion) => {
@@ -39,5 +40,23 @@ export const useSuggestionsStore = defineStore('Suggestions Store', () => {
     currentlySelectedCategory.value = category;
   };
   
-  return { totalSuggestions, getSuggestionsData, suggestionsData, sortSuggestionsList, setCurrentCategory, currentlySelectedCategory };
+  const setSuggestionsListEmpty = (state: boolean) => {
+    suggestionsIsEmpty.value = state;
+  };
+
+  const setTotalSuggestions = (total: number) => {
+    return totalSuggestions.value = total;
+  };
+
+  return { 
+    totalSuggestions, 
+    getSuggestionsData,
+    suggestionsData,
+    sortSuggestionsList, 
+    setCurrentCategory, 
+    currentlySelectedCategory,
+    suggestionsIsEmpty,
+    setSuggestionsListEmpty,
+    setTotalSuggestions,
+  };
 });

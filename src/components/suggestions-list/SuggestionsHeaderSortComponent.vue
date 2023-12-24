@@ -38,7 +38,10 @@ onClickOutside(dropdownEl, (event) => {
 </script>
 
 <template>
-  <div class="relative z-10">
+  <div
+    class="relative z-10"
+    :class="{'pointer-events-none opacity-60': store.suggestionsIsEmpty}"
+  >
     <div
       class="flex flex-col items-start text-white cursor-pointer xs:items-center xs:flex-row"
       @click="openSortDropdown = !openSortDropdown"
